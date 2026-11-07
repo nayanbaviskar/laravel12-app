@@ -9,3 +9,79 @@
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
+
+/* ==========================================================================
+   Short Reusable Utility Classes
+   ========================================================================== */
+
+/* Buttons */
+@utility btn {
+    @apply inline-flex items-center justify-center rounded-lg px-3.5 py-1.5 text-sm font-medium transition-colors cursor-pointer;
+}
+
+@utility btn-primary {
+    @apply bg-gray-900 text-white hover:bg-gray-800;
+}
+
+@utility btn-outline {
+    @apply border border-gray-200 bg-white text-gray-700 hover:bg-gray-50;
+}
+
+@utility btn-outlined {
+    @apply border border-gray-200 bg-white text-gray-700 hover:bg-gray-50;
+}
+
+/* Cards & Containers */
+@utility card {
+    @apply rounded-xl border border-gray-200 bg-white p-5 shadow-xs transition-all;
+}
+
+/* Forms & Inputs */
+@utility form-input {
+    @apply block w-full rounded-lg border border-gray-300 bg-white px-3.5 py-2.5 text-sm text-gray-900 shadow-xs placeholder:text-gray-400 focus:border-gray-900 focus:outline-none focus:ring-1 focus:ring-gray-900 transition-colors;
+}
+
+@utility form-label {
+    @apply block text-sm font-medium text-gray-700;
+}
+
+/* Badges & Status Pills */
+@utility badge {
+    @apply inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-medium;
+}
+
+@utility badge-yellow {
+    @apply bg-yellow-50 text-yellow-700 border-yellow-200;
+}
+
+@utility badge-blue {
+    @apply bg-blue-50 text-blue-700 border-blue-200;
+}
+
+@utility badge-green {
+    @apply bg-green-50 text-green-700 border-green-200;
+}
+
+/* Counter Pills */
+@utility count-pill {
+    @apply ml-2 rounded-full px-2 py-0.5 text-xs font-medium bg-gray-100 text-gray-600;
+}
+
+.btn-primary .count-pill {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+}
+
+/* Typography Helpers */
+@utility title {
+    @apply text-3xl font-bold text-gray-900;
+}
+
+@utility subtitle {
+    @apply text-sm text-gray-500;
+}
+
+@utility text-muted {
+    @apply text-gray-500;
+}
+
