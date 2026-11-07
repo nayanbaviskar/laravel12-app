@@ -6,7 +6,7 @@
             <x-form.field name="email" label="Email Address" type="email" autocomplete="email" required />
             <x-form.field name="password" label="Password" type="password" autocomplete="new-password" required />
 
-            <button type="submit" class="inline-flex w-full items-center justify-center rounded-lg bg-zinc-900 px-4 py-2.5 text-sm font-medium text-white shadow-xs hover:bg-zinc-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900 transition-colors cursor-pointer">
+            <button type="submit" class="btn btn-primary w-full py-2.5">
                 Create Account
             </button>
         </form>

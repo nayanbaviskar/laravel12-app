@@ -15,14 +15,14 @@
                 <a href="/login" class="text-sm font-medium text-zinc-600 hover:text-zinc-900 transition-colors">
                     Sign In
                 </a>
-                <a href="/register" class="inline-flex items-center justify-center rounded-lg bg-zinc-900 px-3.5 py-2 text-sm font-medium text-white shadow-xs hover:bg-zinc-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900 transition-colors">
+                <a href="/register" class="btn btn-primary">
                     Register
                 </a>
             @endguest
             @auth
                 <form action="/logout" method="post" class="inline-block">
                     @csrf
-                    <button type="submit" class="inline-flex items-center justify-center rounded-lg border border-zinc-200 bg-white px-3.5 py-1.5 text-sm font-medium text-zinc-700 shadow-xs hover:bg-zinc-50 hover:text-zinc-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900 transition-colors cursor-pointer">
+                    <button type="submit" class="btn btn-outline">
                         Logout
                     </button>
                 </form>

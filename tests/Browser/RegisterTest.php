@@ -1,6 +1,6 @@
 <?php
 
-it('registers a user', function () {
+it('registers a user', function (): void {
     visit('/register')
         ->fill('name', 'John Doe')
         ->fill('email', 'johndoe@example.com')
@@ -15,7 +15,7 @@ it('registers a user', function () {
     ]);
 });
 
-it('requires a valid email', function () {
+it('requires a valid email', function (): void {
     visit('/register')
         ->fill('name', 'John Doe')
         ->fill('email', 'johndoe123')

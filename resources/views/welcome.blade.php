@@ -27,16 +27,16 @@
 
             <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
                 @guest
-                    <a href="/register" class="inline-flex items-center justify-center rounded-lg bg-zinc-900 px-5 py-3 text-sm font-semibold text-white shadow-sm hover:bg-zinc-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900 transition-colors">
+                    <a href="/register" class="btn btn-primary px-5 py-3 font-semibold">
                         Get Started
                     </a>
-                    <a href="/login" class="inline-flex items-center justify-center rounded-lg border border-zinc-200 bg-white px-5 py-3 text-sm font-semibold text-zinc-700 shadow-xs hover:bg-zinc-50 hover:text-zinc-900 transition-colors">
+                    <a href="/login" class="btn btn-outline px-5 py-3 font-semibold">
                         Sign In
                     </a>
                 @endguest
 
                 @auth
-                    <div class="rounded-xl border border-zinc-200/80 bg-white p-6 shadow-xs">
+                    <div class="card p-6">
                         <p class="text-sm text-zinc-500">Signed in as</p>
                         <p class="mt-1 text-lg font-semibold text-zinc-900">{{ auth()->user()->name }}</p>
                         <p class="text-xs text-zinc-400">{{ auth()->user()->email }}</p>

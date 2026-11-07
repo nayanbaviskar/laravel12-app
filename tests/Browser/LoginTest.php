@@ -1,7 +1,8 @@
 <?php
+
 use App\Models\User;
 
-it('login a user', function () {
+it('login a user', function (): void {
     $user = User::factory()->create(['password' => 'Password123']);
     visit('/login')
         ->fill('email', $user->email)
@@ -9,13 +10,13 @@ it('login a user', function () {
         ->click('@login-button')
         ->assertPathIs('/');
 
-        $this->assertAuthenticated();
+    $this->assertAuthenticated();
 });
 
-it('logout a user', function () {
+it('logout a user', function (): void {
     $user = User::factory()->create();
     $this->actingAs($user);
-    
+
     visit('/')->click('Logout');
     $this->assertGuest();
 });
