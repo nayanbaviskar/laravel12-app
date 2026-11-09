@@ -50,7 +50,7 @@
 
         <!--- modal -->
         <x-modal name="create-idea" title="New Idea">
-            <form x-data="{'status':'pending', 'newLink':'', links:[]}" method="post"
+            <form x-data="{'status':'pending', 'newLink':'', links:[], 'newStep':'', steps:[]}" method="post"
                 action="{{ route('idea.store') }}">
                 @csrf
                 <div class="space-y-6">
@@ -72,6 +72,34 @@
                     </div>
                     <x-form.field name="description" label="Description" placeholder="Describe your idea.."
                         type="textarea" />
+
+                    <!-- Steps -->
+                    <div>
+                        <fieldset class="space-y-3">
+                            <legend class="label">Steps</legend>
+                            <template x-for="(step, index) in steps">
+                                <div class="flex gap-x-2 items-center">
+                                    <input name="steps[]" x-model="steps[index]" class="form-input flex-1" />
+                                    <button type="button" class="btn-danger shrink-0" @click="steps.splice(index,1);"
+                                        aria-label="Remove Step">
+                                        <x-icons.trash class="w-4 h-4" />
+                                    </button>
+                                </div>
+                            </template>
+                            <div class="flex gap-x-2 items-center">
+                                <input data-test="new-step" id="new-step" x-model="newStep"
+                                    placeholder="What needs to be done?" class="form-input flex-1" spellcheck="false" />
+                                <button type="button" data-test="add-new-step"
+                                    class="btn-icon shrink-0 disabled:opacity-40 disabled:cursor-not-allowed"
+                                    @click="steps.push(newStep.trim());newStep='';"
+                                    :disabled="newStep.trim().length===0" aria-label="Add new step">
+                                    <x-icons.plus class="w-4 h-4" />
+                                </button>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <!--end steps -->
+                    <!-- links start -->
                     <div>
                         <fieldset class="space-y-3">
                             <legend class="label">Links</legend>
@@ -97,6 +125,7 @@
                             </div>
                         </fieldset>
                     </div>
+                    <!---links ends-->
                     <div class="flex justify-end gap-x-5">
                         <button type="button" class="btn" @click="$dispatch('close-modal')">Cancel</button>
                         <button class="btn btn-primary p-3" type="submit">Create</button>
