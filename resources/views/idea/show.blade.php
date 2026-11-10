@@ -6,7 +6,8 @@
                 <span>Back</span>
             </a>
             <div class="flex items-center gap-x-2">
-                <button class="btn-icon" title="Edit Idea">
+                <button x-data class="btn-icon" title="Edit Idea" data-test="edit-idea-button"
+                    @click="$dispatch('open-modal','edit-idea')">
                     <x-icons.pencil class="w-4 h-4" />
                 </button>
                 <form method="post" action="{{ route('idea.destroy', $idea) }}">
@@ -28,9 +29,9 @@
                 @endif
                 <h1 class="title">{{ $idea->title }}</h1>
                 <div class="mt-3 flex items-center gap-3">
-                    <x-status-label status="{{ $idea->status }}">
+                    <x-idea.status-label status="{{ $idea->status }}">
                         {{ $idea->status->label() }}
-                    </x-status-label>
+                    </x-idea.status-label>
                     <span class="meta-date">
                         <x-icons.clock class="mr-1 h-3.5 w-3.5" />
                         {{ $idea->created_at->diffForHumans() }}
@@ -38,9 +39,11 @@
                 </div>
             </div>
 
-            <div class="card-content">
-                {{ $idea->description }}
-            </div>
+            @if($idea->description)
+                <div class="card-content">
+                    {{ $idea->description }}
+                </div>
+            @endif
             <!-- steps goes from here -->
             @if($idea->steps->count())
                 <div>
@@ -86,5 +89,6 @@
                 </div>
             @endif
         </div>
+        <x-idea.modal :idea="$idea" />
     </div>
 </x-layout>
