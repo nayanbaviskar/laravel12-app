@@ -79,6 +79,14 @@
     @apply block text-sm font-medium text-gray-700;
 }
 
+@utility label {
+    @apply block text-sm font-medium text-gray-700;
+}
+
+@utility form-file {
+    @apply block w-full rounded-lg border border-gray-300 bg-white text-sm text-gray-600 shadow-xs cursor-pointer transition-colors file:mr-4 file:border-0 file:bg-gray-100 file:px-4 file:py-2.5 file:text-sm file:font-medium file:text-gray-700 hover:file:bg-gray-200 focus:border-gray-900 focus:outline-none focus:ring-1 focus:ring-gray-900;
+}
+
 /* Checkboxes */
 @utility checkbox {
     @apply size-5 inline-flex items-center justify-center rounded-lg border border-gray-300 bg-white transition-colors cursor-pointer shrink-0 hover:border-gray-400 hover:bg-gray-50;

@@ -24,6 +24,11 @@
         <div class="grid gap-6 md:grid-cols-2">
             @forelse($ideas as $idea)
                 <x-card href="{{ route('idea.show', $idea) }}">
+                    @if($idea->image_path)
+                        <div class="mb-4 -mx-4 -mt-4 rounded-t-lg overflow-hidden">
+                            <img src="{{ asset('storage/' . $idea->image_path) }}" alt="" class="w-full h-48 object-cover">
+                        </div>
+                    @endif
                     <div class="flex items-start justify-between gap-3">
                         <x-status-label status="{{ $idea->status }}">
                             {{ $idea->status->label() }}
@@ -50,8 +55,8 @@
 
         <!--- modal -->
         <x-modal name="create-idea" title="New Idea">
-            <form x-data="{'status':'pending', 'newLink':'', links:[], 'newStep':'', steps:[]}" method="post"
-                action="{{ route('idea.store') }}">
+            <form x-data="{'status':'pending', 'newLink':'', links:[], 'newStep':'', steps:[], hasImage: false}"
+                method="post" action="{{ route('idea.store') }}" :enctype="hasImage ? 'multipart/form-data' : null">
                 @csrf
                 <div class="space-y-6">
                     <x-form.field name="title" label="Title" placeholder="Enter idea for the title" autofocus
@@ -72,6 +77,12 @@
                     </div>
                     <x-form.field name="description" label="Description" placeholder="Describe your idea.."
                         type="textarea" />
+
+                    <div class="space-y-1.5">
+                        <label for="image" class="label">Featured Image</label>
+                        <input type="file" name="image" id="image" accept="image/*" class="form-file" @change="hasImage = $el.files.length > 0" />
+                        <x-form.error name='image' />
+                    </div>
 
                     <!-- Steps -->
                     <div>

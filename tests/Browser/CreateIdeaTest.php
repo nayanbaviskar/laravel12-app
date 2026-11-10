@@ -13,12 +13,18 @@ it('create a new idea', function (): void {
         ->click('@add-new-link')
         ->fill('@new-link', 'https://laracasts.com')
         ->click('@add-new-link')
+        ->fill('@new-step', 'Do step 1')
+        ->click('@add-new-step')
+        ->fill('@new-step', 'Do step 2')
+        ->click('@add-new-step')
         ->click('Create')
         ->assertPathIs('/ideas');
 
-    expect($user->ideas()->first())->toMatchArray([
+    expect($idea = $user->ideas()->first())->toMatchArray([
         'title' => 'Test Idea',
         'description' => 'Some description for test',
         'status' => 'completed',
+        'links' => ['https://google.com', 'https://laracasts.com'],
     ]);
+    expect($idea->steps)->toHaveCount(2);
 });

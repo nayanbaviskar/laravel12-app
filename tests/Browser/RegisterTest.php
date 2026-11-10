@@ -3,7 +3,7 @@
 it('registers a user', function (): void {
     visit('/register')
         ->fill('name', 'John Doe')
-        ->fill('email', 'johndoe@example.com')
+        ->fill('email', 'devanand@example.com')
         ->fill('password', 'Password123')
         ->click('Create Account')
         ->assertPathIs('/ideas');
@@ -11,7 +11,7 @@ it('registers a user', function (): void {
     $this->assertAuthenticated();
     expect(Auth::user())->toMatchArray([
         'name' => 'John Doe',
-        'email' => 'johndoe@example.com',
+        'email' => 'devanand@example.com',
     ]);
 });
 

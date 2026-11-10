@@ -21,6 +21,11 @@
 
         <div class="mt-8 space-y-6">
             <div>
+                @if($idea->image_path)
+                    <div class="rounded-lg overflow-hidden">
+                        <img src="{{ asset('storage/' . $idea->image_path) }}" alt="" class="w-full h-auto object-cover">
+                    </div>
+                @endif
                 <h1 class="title">{{ $idea->title }}</h1>
                 <div class="mt-3 flex items-center gap-3">
                     <x-status-label status="{{ $idea->status }}">
@@ -53,7 +58,8 @@
                                                 <x-icons.check class="size-3.5 stroke-[2.5]" />
                                             @endif
                                         </button>
-                                        <span class="{{ $step->completed ? 'line-through' : '' }}">{{ $step->description }}</span>
+                                        <span
+                                            class="{{ $step->completed ? 'line-through' : '' }}">{{ $step->description }}</span>
                                     </form>
                                 </div>
                             </x-card>
